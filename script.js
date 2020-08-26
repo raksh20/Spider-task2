@@ -120,6 +120,7 @@ var prevIndex;
 var answers=[];
 var finalScore=0;
 var index1;
+var index=0;
 
 var body=document.querySelector("body");
 var quiz=document.getElementById("quiz");
@@ -136,7 +137,10 @@ const prev=document.getElementById("prev");
 const submit=document.getElementById("submit");
 const startbtn=document.getElementById("start");
 startbtn.addEventListener("click",startGame);
-var index=0;
+
+
+
+//Quiz starts here
 function startGame(questions){
 	console.log("started");
 	startbtn.classList.add("hide");
@@ -147,6 +151,7 @@ function startGame(questions){
 
 }
 
+//Display of new question
 function newQuestion(){
 	quesCount++;
 	currentQues=questions[index];
@@ -159,9 +164,7 @@ function newQuestion(){
 	clickAns();
 
 	if(currentQues.answered){
-		console.log(currentQues.answered);
-		//ansMessage.innerHTML=answers[answers.length-1];
-		//console.log(answers.length-1);
+		
 		if(currentQues.check=="CORRECT"){
 			ansMessage.innerHTML="CORRECT"
 			quiz.style.background="#76ff03";
@@ -181,16 +184,12 @@ function newQuestion(){
   				body.style.background="#ef6c00";
   				ansMessage.innerHTML="";
   		}
-	
-
-
 
 }
-console.log(answers);
+
+//Display of previous question
 function prevQuestion(){
-	//document.getElementById("ans").classList.add("hide");
-	//document.getElementById("ans").classList.remove("hide");
-	//quesCount++;
+	
 	console.log("previndex"+prevIndex);
 	currentQues=questions[prevIndex];
 	ques.innerHTML=currentQues.question;
@@ -198,80 +197,63 @@ function prevQuestion(){
 	op2.innerHTML=currentQues.option2;
 	op3.innerHTML=currentQues.option3;
 	op4.innerHTML=currentQues.option4;
-	//document.getElementById("ans").classList.add("hide");
-	//options.addEventListener("click",clickAns);
-	//console.log(options)
-	//console.log(answers);
+	
 	if(currentQues.answered){
-		console.log(currentQues.answered);
-		//ansMessage.innerHTML=answers[answers.length-1];
-		console.log(answers.length-1);
+		
 		if(currentQues.check=="CORRECT"){
 			ansMessage.innerHTML="CORRECT"
 			quiz.style.background="#76ff03";
-  				body.style.background="green";
-  				ansMessage.style.color="#76ff03";
+  			body.style.background="green";
+  			ansMessage.style.color="#76ff03";
 		}
 		else{
 			ansMessage.innerHTML="WRONG";
 			quiz.style.background="#ef5350";
-  				body.style.background="#d50000";
-  				ansMessage.style.color="black";
+  			body.style.background="#d50000";
+  			ansMessage.style.color="black";
 
 		}
 	}
 	
-	/*op1.disabled=true;
-	op2.disabled=true;
-  	op3.disabled=true;
-  	op4.disabled=true;*/
-  	//prevReset();
+	
   	else{
   		quiz.style.background="white";
-  				body.style.background="#ef6c00";
-  				ansMessage.innerHTML="";
-  	next.disabled=false;
-  	op1.disabled=false;
-	op2.disabled=false;
-	op3.disabled=false;
-	op4.disabled=false;
+  		body.style.background="#ef6c00";
+  		ansMessage.innerHTML="";
+	  	next.disabled=false;
+	  	op1.disabled=false;
+		op2.disabled=false;
+		op3.disabled=false;
+		op4.disabled=false;
 
-	prevClickAns();
-}
-
-
-
+		prevClickAns();
+	}
 
 }
+
+//Function for clicking answers
 function clickAns(){
 	currentQues=questions[index];
-	console.log(score);
-	//console.log(apple);
+	
 	document.getElementById("ans").classList.remove("hide");
-	for(var i=0;i<4;i++){
-		//var list = document.getElementsByClassName("options")[0];
 
-  		//console.log(list.getElementsByClassName(i+1)[0].className);
-  		//document.getElementById(1).addEventListener("click",function(){
-  			//console.log("hi")
-  			var list = document.getElementsByClassName("options")[0];
+	for(var i=0;i<4;i++){
+		
+  		var list = document.getElementsByClassName("options")[0];
   		if(list.getElementsByClassName(i+1)[0].className==currentQues.answer){
 
   			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
-  				currentQues.answered=true;
-  				currentQues.check="CORRECT";
-  				currentQues.scores=1;
-  				next.classList.remove("hide");
-  				prev.classList.remove("hide");
-  				quiz.style.background="#76ff03";
-  				body.style.background="green";
-  				ansMessage.style.color="#76ff03";
+	  		currentQues.answered=true;
+	  		currentQues.check="CORRECT";
+			currentQues.scores=1;
+			next.classList.remove("hide");
+			prev.classList.remove("hide");
+			quiz.style.background="#76ff03";
+			body.style.background="green";
+			ansMessage.style.color="#76ff03";
   			count++;
-  			//prevCount=count;
   			apple.push("bye");
-  			console.log(apple);
   			answers.push("CORRECT");
-  			//console.log(answers);
   			ansMessage.innerHTML="CORRECT";
   			op1.disabled=true;
   			op2.disabled=true;
@@ -279,124 +261,100 @@ function clickAns(){
   			op4.disabled=true;
 
   			if(currentQues.option4=="1%"){
- 		submit.classList.remove("hide");
- 		next.disabled=true;
- 		prev.disabled=true;
- 	}
+		 		submit.classList.remove("hide");
+		 		next.disabled=true;
+		 		prev.disabled=true;
+ 			}
   			
   		});
   			
-  		}
+  	}
   		else{
   			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
-  				currentQues.answered=true;
-  				currentQues.check="WRONG";
-  				currentQues.scores=0;
-  				next.classList.remove("hide");
-  				prev.classList.remove("hide");
-  				quiz.style.background="#ef5350";
-  				body.style.background="#d50000";
-  				ansMessage.style.color="black";
+				currentQues.answered=true;
+				currentQues.check="WRONG";
+				currentQues.scores=0;
+				next.classList.remove("hide");
+				prev.classList.remove("hide");
+				quiz.style.background="#ef5350";
+				body.style.background="#d50000";
+				ansMessage.style.color="black";
 
-  			count++;
-  			//prevCount=count;
-  			if(apple.length==0){
-  			apple.push("hi")
-  		}else{
-  			apple.pop();
-  		}
-  			console.log(apple);
-  			answers.push("WRONG");
-  			//console.log(answers);
-  			ansMessage.innerHTML="WRONG";
-  			op1.disabled=true;
-  			op2.disabled=true;
-  			op3.disabled=true;
-  			op4.disabled=true;
-  			
-  			if(currentQues.option4=="1%"){
- 		submit.classList.remove("hide");
- 		next.disabled=true;
- 		prev.disabled=true;
- 	}
+	  			count++;
+	  		
+	  			if(apple.length==0){
+	  				apple.push("hi")
+	  			}
+	  			else{
+	  				apple.pop();
+	  			}
+	  			
+	  			answers.push("WRONG");
+	  			
+	  			ansMessage.innerHTML="WRONG";
+	  			op1.disabled=true;
+	  			op2.disabled=true;
+	  			op3.disabled=true;
+	  			op4.disabled=true;
+	  			
+	  			if(currentQues.option4=="1%"){
+					submit.classList.remove("hide");
+					next.disabled=true;
+					prev.disabled=true;
+	 			}
 
-  		});
+  			});
   		
   		}
   		
-
-  		
-
-
-  	//});
 	}
-	/*if(apple.length==0){
-  		console.log("hi")
-  		}
-  	else{
-  		console.log("bye");
-  	}*/
+	
   	for(var i=0;i<=apple.length;i++){
   		if(apple[i]=="bye"){
   			score++;
   			break;
   		}
   	}
-  	//console.log(apple);
-  	//console.log(quesCount);
- 	/*if(currentQues.option4=="1%"){
- 		submit.classList.remove("hide");
- 		next.disabled=true;
- 		prev.disabled=true;
- 	}*/
-	//next.classList.remove("hide");
-  		clickNext();
-  		//clickPrev();
-  		//clickSubmit();
-
+  	
+  	clickNext();
+  		
 }
+
 function prevClickAns(){
 	currentQues=questions[prevIndex];
-	console.log(score);
 	
 	document.getElementById("ans").classList.remove("hide");
 	for(var i=0;i<4;i++){
-		//var list = document.getElementsByClassName("options")[0];
-
-  		//console.log(list.getElementsByClassName(i+1)[0].className);
-  		//document.getElementById(1).addEventListener("click",function(){
-  			//console.log("hi")
-  			var list = document.getElementsByClassName("options")[0];
+		
+  		var list = document.getElementsByClassName("options")[0];
   		if(list.getElementsByClassName(i+1)[0].className==currentQues.answer){
   			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
   			
 
-  			currentQues.answered=true;
-  				currentQues.check="CORRECT";
-  				currentQues.scores=1;
-  				next.classList.remove("hide");
-  				prev.classList.remove("hide");
-  				quiz.style.background="#76ff03";
-  				body.style.background="green";
-  				ansMessage.style.color="#76ff03";
-  			count++;
-  			//prevCount=count;
-  			apple.push("bye");
-
-  			answers.push("CORRECT");
-  			console.log(answers);
-  			ansMessage.innerHTML="CORRECT";
-  			op1.disabled=true;
-  			op2.disabled=true;
-  			op3.disabled=true;
-  			op4.disabled=true;
-  		});
+	  			currentQues.answered=true;
+				currentQues.check="CORRECT";
+				currentQues.scores=1;
+				next.classList.remove("hide");
+				prev.classList.remove("hide");
+				quiz.style.background="#76ff03";
+				body.style.background="green";
+				ansMessage.style.color="#76ff03";
+	  			count++;
+	  			apple.push("bye");
+	  			answers.push("CORRECT");
+	  			
+	  			ansMessage.innerHTML="CORRECT";
+	  			op1.disabled=true;
+	  			op2.disabled=true;
+	  			op3.disabled=true;
+	  			op4.disabled=true;
+  			});
   		}
   		else{
   			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
   			
 
-  			currentQues.answered=true;
+  				currentQues.answered=true;
   				currentQues.check="WRONG";
   				currentQues.scores=0;
   				next.classList.remove("hide");
@@ -405,27 +363,25 @@ function prevClickAns(){
   				body.style.background="#d50000";
   				ansMessage.style.color="black";
 
-  			count++;
-  			//prevCount=count;
-  			if(apple.length==0){
-  			apple.push("hi")
-  		}else{
-  			apple.pop();
-  		}
-  			//console.log(apple);
-  			answers.push("WRONG");
-  			console.log(answers);
-  			ansMessage.innerHTML="WRONG";
-  			op1.disabled=true;
-  			op2.disabled=true;
-  			op3.disabled=true;
-  			op4.disabled=true;
-  		});
+  				count++;
+  			
+  				if(apple.length==0){
+  					apple.push("hi")
+  				}
+  				else{
+  					apple.pop();
+  				}
+  			
+	  			answers.push("WRONG");
+	  			console.log(answers);
+	  			ansMessage.innerHTML="WRONG";
+	  			op1.disabled=true;
+	  			op2.disabled=true;
+	  			op3.disabled=true;
+	  			op4.disabled=true;
+  			});
   		}
   		
-
-
-  	//});
 	}
 	for(var i=0;i<=apple.length;i++){
   		if(apple[i]=="bye"){
@@ -436,53 +392,43 @@ function prevClickAns(){
 
 	next.classList.remove("hide");
   		clickNext();
-  		//prevReset();
-  		//clickPrev();
-  		//clickSubmit();
-
+  		
 }
 
+//Function for next button
 function clickNext(){
-	//index++;
-	//document.getElementById("ans").classList.add("hide");
-	/*if(count==prevCount){
-		alert("Select the answer");
-	}*/
-	/*if(op1.disabled=false){
-		alert("Select answer");
-	}*/
+	
 	next.addEventListener("click",reset);
 	next.addEventListener("click",newQuestion);
-
-	//document.getElementById("ans").classList.add("hide");
-
 }
+
+
 function reset(){
-	//prev.classList.add("hide");
-	//next.classList.add("hide");
+	
 	quiz.style.background="white";
 	body.style.background="#ef6c00";
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
 	prev.classList.remove("hide");
-	//submit.classList.remove("hide");
 	result.classList.remove("hide");
 	op1.disabled=false;
 	op2.disabled=false;
 	op3.disabled=false;
 	op4.disabled=false;
-	//apple.length=0;
 
 }
+
+
 function prevReset(){
-	//index++;
+	
 	prevCount--;
-	//prevCount=0;
+	
 }
 
+//Function for previous button
 function clickPrev(){
-	//prev.addEventListener("click",function(){
+	
 	prevCount++;
 	console.log("prevCount"+prevCount);
 	console.log("index"+index);
@@ -492,30 +438,18 @@ function clickPrev(){
 	}
 	index=prevIndex;
 	prevReset();
-//});
-	/*prev.addEventListener("click",function(){
-		prevQuestion();
-	});*/
-	
-	//prevQues=questions[prevIndex];
-
-}
-function choose(){
 
 }
 
+//Function for submit button
 function clickSubmit(){
-	//submit.addEventListener("click",function(){
+	
 		for(var i=0;i<10;i++){
 			abc=questions[i];
 			finalScore+=abc.scores;
-
 		}
-
 		result.innerHTML="Your score is "+finalScore+"/10";
 		submit.disabled=true;
-	//});
-
 }
 
 
