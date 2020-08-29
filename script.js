@@ -1,5 +1,5 @@
 var questions=[{
-question:"1) How many countries, areas or territories are suffering from novel coronavirus outbreak in the World?",
+question:"How many countries, areas or territories are suffering from novel coronavirus outbreak in the World?",
 option1:"More than 50",
 option2:"More than 100",
 option3:"More than 150",
@@ -10,7 +10,7 @@ check:null,
 scores:0
 },
 {
-question:"2) Thailand announced that it has proceeded to test its novel coronavirus vaccine on which animal/bird?",
+question:"Thailand announced that it has proceeded to test its novel coronavirus vaccine on which animal/bird?",
 option1:"Monkeys",
 option2:"Lizards",
 option3:"Hens",
@@ -21,7 +21,7 @@ check:null,
 scores:0
 },
 {
-question:"3) Which of the following diseases are related to coronavirus?",
+question:"Which of the following diseases are related to coronavirus?",
 option1:"MERS",
 option2:"SARS",
 option3:"Both A and B",
@@ -32,7 +32,7 @@ check:null,
 scores:0
 },
 {
-question:"4) The first case of novel coronavirus was identified in-",
+question:"The first case of novel coronavirus was identified in-",
 option1:"Beijing",
 option2:"Shanghai",
 option3:"Wuhan, Hubei", 
@@ -43,7 +43,7 @@ check:null,
 scores:0
 },
 {
-question:"5) For how long should you wash your hands to kill the coronavirus disease (COVID-19)?",
+question:"For how long should you wash your hands to kill the coronavirus disease (COVID-19)?",
 option1:"5 seconds",
 option2:"20 seconds",
 option3:"10 seconds",
@@ -54,7 +54,7 @@ check:null,
 scores:0
 },
 {
-question:"6) From where coronavirus got its name?",
+question:"From where coronavirus got its name?",
 option1:"Due to their crown-like projections",
 option2:"Due to their leaf-like projections",
 option3:"Due to their surface structure of bricks",
@@ -65,7 +65,7 @@ check:null,
 scores:0
 },
 {
-question:"7) How long does the novel coronavirus survive outside the body?",
+question:"How long does the novel coronavirus survive outside the body?",
 option1:"A week in the air and on surfaces",
 option2:"Several hours to days",
 option3:"Up to a two and a half weeks",
@@ -76,7 +76,7 @@ check:null,
 scores:0
 },
 {
-question:"8) What is the safe distance to stay apart from someone who is sick?",
+question:"What is the safe distance to stay apart from someone who is sick?",
 option1:"Atleast 3 feet (1 meter)",
 option2:"Atleast 1 foot (30 cm)",
 option3:"10 cm",
@@ -87,7 +87,7 @@ check:null,
 scores:0
 },
 {
-question:"9) Can you catch the coronavirus disease (COVID-19) from your pet?",
+question:"Can you catch the coronavirus disease (COVID-19) from your pet?",
 option1:"Yes",
 option2:"Only from dogs",
 option3:"Only from cats",
@@ -98,7 +98,7 @@ check:null,
 scores:0
 },
 {
-question:"10) What percentage alcohol in hand rubs and disinfectants is needed to kill the coronavirus disease (COVID-19)?",
+question:"What percentage alcohol in hand rubs and disinfectants is needed to kill the coronavirus disease (COVID-19)?",
 option1:"40%",
 option2:"60%",
 option3:"10%",
@@ -110,18 +110,20 @@ scores:0
 }
 ];
 
-var score=0;
-var apple=[];
+var addscore=[];
 var count=0;
 var prevCount=0;
 var quesCount=0;
 var currentQues={};
+var shuffledQues=[];
 var prevIndex;
 var answers=[];
 var finalScore=0;
 var index1;
 var index=0;
+var randomIndex;
 
+var scoreContainer=document.getElementById("scoreContainer");
 var body=document.querySelector("body");
 var quiz=document.getElementById("quiz");
 var result=document.getElementById("result");
@@ -136,15 +138,55 @@ const next=document.getElementById("next");
 const prev=document.getElementById("prev");
 const submit=document.getElementById("submit");
 const startbtn=document.getElementById("start");
+const name=document.getElementById("name");
+var username=document.getElementById("myname");
+
+
+function shuffle(arr1)
+{
+  var len=arr1.length,index,temp;
+  while(len>0)
+  {
+    index=Math.floor(Math.random()*len);
+    len--;
+    temp=arr1[len];
+    arr1[len]=arr1[index];
+    arr1[index]=temp;
+   }
+   return(arr1);
+}   
+var arr=[];
+for(i=0;i<=9;i++)
+{
+  arr.push(i);
+}
+var randomNo=shuffle(arr);
+
+for(var i of randomNo){
+	shuffledQues.push(questions[i]);
+}
+
+var num=1;
+shuffledQues.forEach(function (element) {
+	
+	for(i=10;i>=num;i--){
+  	element.number = i;
+ 	}
+ 	num++;
+});
+
+
 startbtn.addEventListener("click",startGame);
-
-
 
 //Quiz starts here
 function startGame(questions){
-	console.log("started");
+	
 	startbtn.classList.add("hide");
+	name.classList.add("hide");
+
+	document.getElementById("navbar").classList.remove("hide");
 	document.getElementById("quiz").classList.remove("hide");
+	document.getElementById("timer").classList.remove("hide");
 	next.classList.remove("hide");
 
 	newQuestion();
@@ -153,8 +195,9 @@ function startGame(questions){
 
 //Display of new question
 function newQuestion(){
+
 	quesCount++;
-	currentQues=questions[index];
+	currentQues=shuffledQues[index];
 	ques.innerHTML=currentQues.question;
 	op1.innerHTML=currentQues.option1;
 	op2.innerHTML=currentQues.option2;
@@ -168,22 +211,25 @@ function newQuestion(){
 		if(currentQues.check=="CORRECT"){
 			ansMessage.innerHTML="CORRECT"
 			quiz.style.background="#76ff03";
-  				body.style.background="green";
-  				ansMessage.style.color="#76ff03";
+  			body.style.background="green";
+  			ansMessage.style.color="#76ff03";
 		}
 		else{
 			ansMessage.innerHTML="WRONG";
 			quiz.style.background="#ef5350";
-  				body.style.background="#d50000";
-  				ansMessage.style.color="black";
+  			body.style.background="#d50000";
+  			ansMessage.style.color="black";
 
 		}
 	}
 	else{
   		quiz.style.background="white";
-  				body.style.background="#ef6c00";
-  				ansMessage.innerHTML="";
-  		}
+  		body.style.backgroundImage='url("covid.JPG")';
+  		ansMessage.innerHTML="";
+  	}
+  	if(shuffledQues.number==10){
+  		submit.classList.remove("hide");
+  	}
 
 }
 
@@ -191,7 +237,7 @@ function newQuestion(){
 function prevQuestion(){
 	
 	console.log("previndex"+prevIndex);
-	currentQues=questions[prevIndex];
+	currentQues=shuffledQues[prevIndex];
 	ques.innerHTML=currentQues.question;
 	op1.innerHTML=currentQues.option1;
 	op2.innerHTML=currentQues.option2;
@@ -218,7 +264,7 @@ function prevQuestion(){
 	
   	else{
   		quiz.style.background="white";
-  		body.style.background="#ef6c00";
+  		body.style.backgroundImage='url("covid.JPG")';
   		ansMessage.innerHTML="";
 	  	next.disabled=false;
 	  	op1.disabled=false;
@@ -233,7 +279,7 @@ function prevQuestion(){
 
 //Function for clicking answers
 function clickAns(){
-	currentQues=questions[index];
+	currentQues=shuffledQues[index];
 	
 	document.getElementById("ans").classList.remove("hide");
 
@@ -252,7 +298,6 @@ function clickAns(){
 			body.style.background="green";
 			ansMessage.style.color="#76ff03";
   			count++;
-  			apple.push("bye");
   			answers.push("CORRECT");
   			ansMessage.innerHTML="CORRECT";
   			op1.disabled=true;
@@ -260,7 +305,7 @@ function clickAns(){
   			op3.disabled=true;
   			op4.disabled=true;
 
-  			if(currentQues.option4=="1%"){
+  			if(index==9){
 		 		submit.classList.remove("hide");
 		 		next.disabled=true;
 		 		prev.disabled=true;
@@ -279,25 +324,15 @@ function clickAns(){
 				quiz.style.background="#ef5350";
 				body.style.background="#d50000";
 				ansMessage.style.color="black";
-
 	  			count++;
-	  		
-	  			if(apple.length==0){
-	  				apple.push("hi")
-	  			}
-	  			else{
-	  				apple.pop();
-	  			}
-	  			
 	  			answers.push("WRONG");
-	  			
 	  			ansMessage.innerHTML="WRONG";
 	  			op1.disabled=true;
 	  			op2.disabled=true;
 	  			op3.disabled=true;
 	  			op4.disabled=true;
 	  			
-	  			if(currentQues.option4=="1%"){
+	  			if(index==9){
 					submit.classList.remove("hide");
 					next.disabled=true;
 					prev.disabled=true;
@@ -308,20 +343,16 @@ function clickAns(){
   		}
   		
 	}
-	
-  	for(var i=0;i<=apple.length;i++){
-  		if(apple[i]=="bye"){
-  			score++;
-  			break;
-  		}
-  	}
+	if(index==9){
+		submit.classList.remove("hide");
+	}
   	
   	clickNext();
   		
 }
 
 function prevClickAns(){
-	currentQues=questions[prevIndex];
+	currentQues=shuffledQues[prevIndex];
 	
 	document.getElementById("ans").classList.remove("hide");
 	for(var i=0;i<4;i++){
@@ -330,7 +361,6 @@ function prevClickAns(){
   		if(list.getElementsByClassName(i+1)[0].className==currentQues.answer){
   			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
   			
-
 	  			currentQues.answered=true;
 				currentQues.check="CORRECT";
 				currentQues.scores=1;
@@ -340,9 +370,7 @@ function prevClickAns(){
 				body.style.background="green";
 				ansMessage.style.color="#76ff03";
 	  			count++;
-	  			apple.push("bye");
 	  			answers.push("CORRECT");
-	  			
 	  			ansMessage.innerHTML="CORRECT";
 	  			op1.disabled=true;
 	  			op2.disabled=true;
@@ -362,18 +390,8 @@ function prevClickAns(){
   				quiz.style.background="#ef5350";
   				body.style.background="#d50000";
   				ansMessage.style.color="black";
-
   				count++;
-  			
-  				if(apple.length==0){
-  					apple.push("hi")
-  				}
-  				else{
-  					apple.pop();
-  				}
-  			
 	  			answers.push("WRONG");
-	  			console.log(answers);
 	  			ansMessage.innerHTML="WRONG";
 	  			op1.disabled=true;
 	  			op2.disabled=true;
@@ -383,13 +401,6 @@ function prevClickAns(){
   		}
   		
 	}
-	for(var i=0;i<=apple.length;i++){
-  		if(apple[i]=="bye"){
-  			score++;
-  			break;
-  		}
-  	}
-
 	next.classList.remove("hide");
   		clickNext();
   		
@@ -397,6 +408,7 @@ function prevClickAns(){
 
 //Function for next button
 function clickNext(){
+
 	
 	next.addEventListener("click",reset);
 	next.addEventListener("click",newQuestion);
@@ -404,9 +416,15 @@ function clickNext(){
 
 
 function reset(){
+	if(currentQues.check=="CORRECT"){
+		document.getElementById("quesnav"+currentQues.number).classList.add("correct");
+	}
+	else if(currentQues.check=="WRONG"){
+		document.getElementById("quesnav"+currentQues.number).classList.add("wrong");
+	}
 	
 	quiz.style.background="white";
-	body.style.background="#ef6c00";
+	body.style.backgroundImage='url("covid.JPG")';
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
@@ -416,6 +434,7 @@ function reset(){
 	op2.disabled=false;
 	op3.disabled=false;
 	op4.disabled=false;
+
 
 }
 
@@ -440,17 +459,225 @@ function clickPrev(){
 	prevReset();
 
 }
+var todaydate;
+var todaytime;
+var dispName=document.getElementById("dispName");
+var dispScore=document.getElementById("dispScore");
+var dispDate=document.getElementById("dispDate");
+var dispTime=document.getElementById("dispTime");
 
 //Function for submit button
 function clickSubmit(){
+	result.classList.remove("hide");
+
+	scoreContainer.classList.remove("hide");
+	for(var i=0;i<10;i++){
+		abc=shuffledQues[i];
+		finalScore+=abc.scores;
+	}
+
+	result.innerHTML="Name: "+username.value+"<br> Your score is "+finalScore+"/10 <br> Correct Percentage:"+finalScore*10+"% <br> Number of correct questions= "+finalScore;
+	submit.disabled=true;
+	next.disabled=true;
+	prev.disabled=true;
+	var today= new Date();
+	todaydate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+	todaytime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 	
-		for(var i=0;i<10;i++){
-			abc=questions[i];
-			finalScore+=abc.scores;
+	var scores = JSON.parse(localStorage.getItem("detailstored"));
+	console.log(JSON.parse(localStorage.getItem("detailstored")));
+	update();
+	function update(){
+
+		if(scores==null){
+			var details={
+				name:username.value,
+				score:finalScore,
+				date:todaydate,
+				time:todaytime
+			};
+
+			localStorage.setItem("detailstored", JSON.stringify(details));
+			scores = JSON.parse(localStorage.getItem("detailstored"));
+
+			dispName.innerHTML="Name: "+scores.name;
+			dispScore.innerHTML="Score: "+scores.score+"/10";
+			dispDate.innerHTML="Date: "+scores.date;
+			dispTime.innerHTML="Time: "+scores.time;
+
 		}
-		result.innerHTML="Your score is "+finalScore+"/10";
-		submit.disabled=true;
+		if((finalScore>=scores.score)){
+			var details={
+				name:username.value,
+				score:finalScore,
+				date:todaydate,
+				time:todaytime
+			};
+
+			localStorage.setItem("detailstored", JSON.stringify(details));
+			scores = JSON.parse(localStorage.getItem("detailstored"));
+
+			dispName.innerHTML="Name: "+scores.name;
+			dispScore.innerHTML="Score: "+scores.score+"/10";
+			dispDate.innerHTML="Date: "+scores.date;
+			dispTime.innerHTML="Time: "+scores.time;
+
+		}
+
+		if((finalScore<scores.score)){
+			dispName.innerHTML="Name: "+scores.name;
+			dispScore.innerHTML="Score: "+scores.score+"/10";
+			dispDate.innerHTML="Date: "+scores.date;
+			dispTime.innerHTML="Time: "+scores.time;
+
+		}
+
+	}
+
 }
+//window.localStorage.clear();
+
+var navId;
+ function navigation(navQuesIndex,navigationId){
+ 	
+ 	navId=navigationId;
+ 	navQuestion(navQuesIndex-1,navId);
+ 	
+ }
+
+ function navQuestion(index,navId){
+
+	console.log(index);
+	quesCount++;
+	currentQues=shuffledQues[index];
+	ques.innerHTML=currentQues.question;
+	op1.innerHTML=currentQues.option1;
+	op2.innerHTML=currentQues.option2;
+	op3.innerHTML=currentQues.option3;
+	op4.innerHTML=currentQues.option4;
+	
+
+	if(currentQues.answered){
+		
+		if(currentQues.check=="CORRECT"){
+			ansMessage.innerHTML="CORRECT"
+			quiz.style.background="#76ff03";
+  			body.style.background="green";
+  			ansMessage.style.color="#76ff03";
+  			document.getElementById(navId).style.background="#76ff03";
+  			
+		}
+		else{
+			ansMessage.innerHTML="WRONG";
+			quiz.style.background="#ef5350";
+  			body.style.background="#d50000";
+  			ansMessage.style.color="black";
+  			document.getElementById(navId).style.background="#ef5350";
+
+		}
+	}
+	else{
+  		quiz.style.background="white";
+		body.style.backgroundImage='url("covid.JPG")';
+		ansMessage.innerHTML="";
+		op1.disabled=false;
+		op2.disabled=false;
+		op3.disabled=false;
+		op4.disabled=false;
+  	}
+  	
+  	currentQues=shuffledQues[index];
+  	if(currentQues.number==10){
+  		submit.classList.remove("hide");
+  	}
+	
+	document.getElementById("ans").classList.remove("hide");
+	for(var i=0;i<4;i++){
+		
+  		var list = document.getElementsByClassName("options")[0];
+  		if(list.getElementsByClassName(i+1)[0].className==currentQues.answer){
+  			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
+  			
+	  			currentQues.answered=true;
+				currentQues.check="CORRECT";
+				currentQues.scores=1;
+				next.classList.remove("hide");
+				prev.classList.remove("hide");
+				quiz.style.background="#76ff03";
+				body.style.background="green";
+				ansMessage.style.color="#76ff03";
+	  			count++;
+	  			apple.push("bye");
+	  			answers.push("CORRECT");
+	  			ansMessage.innerHTML="CORRECT";
+	  			op1.disabled=true;
+	  			op2.disabled=true;
+	  			op3.disabled=true;
+	  			op4.disabled=true;
+  			});
+  		}
+  		else{
+  			list.getElementsByClassName(i+1)[0].addEventListener("click",function(){
+  			
+
+  				currentQues.answered=true;
+  				currentQues.check="WRONG";
+  				currentQues.scores=0;
+  				next.classList.remove("hide");
+  				prev.classList.remove("hide");
+  				quiz.style.background="#ef5350";
+  				body.style.background="#d50000";
+  				ansMessage.style.color="black";
+  				count++;
+	  			answers.push("WRONG");
+	  			console.log(answers);
+	  			ansMessage.innerHTML="WRONG";
+	  			op1.disabled=true;
+	  			op2.disabled=true;
+	  			op3.disabled=true;
+	  			op4.disabled=true;
+  			});
+  		}
+  		
+	}
+	
+
+	next.classList.remove("hide");
+  		clickNext();
+
+}
+
+function navReset(){
+	if(currentQues.check=="CORRECT"){
+		document.getElementById("quesnav"+currentQues.number).classList.add("correct");
+	}
+	else if(currentQues.check=="WRONG"){
+		document.getElementById("quesnav"+currentQues.number).classList.add("wrong");
+	}
+
+}
+var interval;
+function countDown(){
+
+	var count = 300;
+	interval = setInterval(function(){
+	  document.getElementById('count').innerHTML=count;
+	  count--;
+	  if (count < -1){
+	    clearInterval(interval);
+	    document.getElementById('count').innerHTML='Done';
+	    clickSubmit();
+	    alert("You're out of time!");
+	  }
+	}, 1000);
+}
+function myStop() {
+  clearInterval(interval);
+}
+
+
+
+
 
 
 
