@@ -181,7 +181,7 @@ function newQuestion(){
 	}
 	else{
   		quiz.style.background="white";
-  				body.style.background="#ef6c00";
+  				body.style.backgroundImage='url("covid.JPG")';
   				ansMessage.innerHTML="";
   		}
 
@@ -218,7 +218,7 @@ function prevQuestion(){
 	
   	else{
   		quiz.style.background="white";
-  		body.style.background="#ef6c00";
+  		body.style.backgroundImage='url("covid.JPG")';
   		ansMessage.innerHTML="";
 	  	next.disabled=false;
 	  	op1.disabled=false;
@@ -406,7 +406,7 @@ function clickNext(){
 function reset(){
 	
 	quiz.style.background="white";
-	body.style.background="#ef6c00";
+	body.style.backgroundImage='url("covid.JPG")';
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
