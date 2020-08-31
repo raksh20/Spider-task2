@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 body{
-	background-image: url('covid.JPG');
+	background-image: url('covid.jpg');
 	padding: 0;
 	margin: 0;
 	display: flex;
@@ -72,7 +72,7 @@ h1{
 	box-shadow: 0 0 10px 2px black;
 	width:80%;
 	margin-left: 60px;
-	background-image: url('covid.JPG');
+	background-image: url('covid.jpg');
 	color:white;
 	text-align: center;
 
@@ -88,7 +88,7 @@ h1{
   	bottom: 20px;
   	top: 10px;
   	left: 10px;
-  	background-image: url('covid.JPG');
+  	background-image: url('covid.jpg');
   	color:white;
   	overflow-x: hidden;
   	padding-top: 10px;
@@ -104,7 +104,7 @@ h1{
   	bottom: 20px;
   	top: 10px;
   	right: 10px;
-  	background-image: url('covid.JPG');
+  	background-image: url('covid.jpg');
   	color:white;
   	overflow-x: hidden;
   	padding-top: 20px;

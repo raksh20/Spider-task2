@@ -224,7 +224,7 @@ function newQuestion(){
 	}
 	else{
   		quiz.style.background="white";
-  		body.style.backgroundImage='url("covid.JPG")';
+  		body.style.backgroundImage='url("covid.jpg")';
   		ansMessage.innerHTML="";
   	}
   	if(shuffledQues.number==10){
@@ -264,7 +264,7 @@ function prevQuestion(){
 	
   	else{
   		quiz.style.background="white";
-  		body.style.backgroundImage='url("covid.JPG")';
+  		body.style.backgroundImage='url("covid.jpg")';
   		ansMessage.innerHTML="";
 	  	next.disabled=false;
 	  	op1.disabled=false;
@@ -424,7 +424,7 @@ function reset(){
 	}
 	
 	quiz.style.background="white";
-	body.style.backgroundImage='url("covid.JPG")';
+	body.style.backgroundImage='url("covid.jpg")';
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
@@ -578,7 +578,7 @@ var navId;
 	}
 	else{
   		quiz.style.background="white";
-		body.style.backgroundImage='url("covid.JPG")';
+		body.style.backgroundImage='url("covid.jpg")';
 		ansMessage.innerHTML="";
 		op1.disabled=false;
 		op2.disabled=false;
@@ -607,7 +607,6 @@ var navId;
 				body.style.background="green";
 				ansMessage.style.color="#76ff03";
 	  			count++;
-	  			apple.push("bye");
 	  			answers.push("CORRECT");
 	  			ansMessage.innerHTML="CORRECT";
 	  			op1.disabled=true;
@@ -630,7 +629,6 @@ var navId;
   				ansMessage.style.color="black";
   				count++;
 	  			answers.push("WRONG");
-	  			console.log(answers);
 	  			ansMessage.innerHTML="WRONG";
 	  			op1.disabled=true;
 	  			op2.disabled=true;
