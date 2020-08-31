@@ -168,21 +168,21 @@ function newQuestion(){
 		if(currentQues.check=="CORRECT"){
 			ansMessage.innerHTML="CORRECT"
 			quiz.style.background="#76ff03";
-  				body.style.background="green";
-  				ansMessage.style.color="#76ff03";
+  			body.style.background="green";
+  			ansMessage.style.color="#76ff03";
 		}
 		else{
 			ansMessage.innerHTML="WRONG";
 			quiz.style.background="#ef5350";
-  				body.style.background="#d50000";
-  				ansMessage.style.color="black";
+  			body.style.background="#d50000";
+  			ansMessage.style.color="black";
 
 		}
 	}
 	else{
   		quiz.style.background="white";
-  				body.style.backgroundImage='url("covid.JPG")';
-  				ansMessage.innerHTML="";
+  		body.style.backgroundImage='url("covid.jpg")';
+  		ansMessage.innerHTML="";
   		}
 
 }
@@ -218,7 +218,7 @@ function prevQuestion(){
 	
   	else{
   		quiz.style.background="white";
-  		body.style.backgroundImage='url("covid.JPG")';
+  		body.style.backgroundImage='url("covid.jpg")';
   		ansMessage.innerHTML="";
 	  	next.disabled=false;
 	  	op1.disabled=false;
@@ -406,7 +406,7 @@ function clickNext(){
 function reset(){
 	
 	quiz.style.background="white";
-	body.style.backgroundImage='url("covid.JPG")';
+	body.style.backgroundImage='url("covid.jpg")';
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
