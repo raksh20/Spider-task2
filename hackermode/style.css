@@ -1,0 +1,145 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	background-image: url('covid.jpg');
+	padding: 0;
+	margin: 0;
+	display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.hide{
+	display:none;
+}
+#quiz{
+	background-color: white;
+	border-style: inset;
+	border-width:1px;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 40px;
+	padding: 10px;
+	box-shadow: 0 0 10px 2px;
+	width: 600px;
+	height:300px;
+
+}
+button{
+	border-radius: 20px;
+	background-color: white;
+	border: solid;
+    color: black;
+    padding: 15px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  
+}
+button:hover {
+	background: #a6e9f9;
+}
+.options{
+	display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+#prev,#next,#start,#submit{
+	font-size: 20px;
+
+}
+#submit{
+	float:right;
+}
+h1{
+	margin right: 50px;
+	margin-left: 150px;
+	text-shadow: 2px 2px 4px #000000;
+}
+#ans{
+	padding-left: 250px;
+	font-size: large;
+}
+#result{
+	padding-left:30px;
+	font-size: large;
+	border-style: inset;
+	border-width:1px;
+	border-radius: 20px;
+	box-shadow: 0 0 10px 2px black;
+	width:80%;
+	margin-left: 60px;
+	background-image: url('covid.jpg');
+	color:white;
+	text-align: center;
+
+}
+.sidenav {
+	border-style: inset;
+	border-width:1px;
+	border-radius: 20px;
+	box-shadow: 0 0 10px 2px black;
+	height: 95%;
+  	width: 200px;
+  	position: fixed;
+  	bottom: 20px;
+  	top: 10px;
+  	left: 10px;
+  	background-image: url('covid.jpg');
+  	color:white;
+  	overflow-x: hidden;
+  	padding-top: 10px;
+}
+.highscore {
+	border-style: inset;
+	border-width:1px;
+	border-radius: 20px;
+	box-shadow: 0 0 10px 2px black;
+  	height: 95%;
+  	width: 250px;
+  	position: fixed;
+  	bottom: 20px;
+  	top: 10px;
+  	right: 10px;
+  	background-image: url('covid.jpg');
+  	color:white;
+  	overflow-x: hidden;
+  	padding-top: 20px;
+}
+
+.quesnav{
+	margin:3px 0 0 40px;
+	padding:10px;
+}
+.correct{
+	background: #76ff03;
+}
+.wrong{
+	background: #ef5350
+}
+#navmsg{
+	margin:0;
+	margin-left: 8px;
+	font-size: 16px;
+}
+#scoreContainer{
+	padding-left: 20px;
+}
+#info{
+	padding-left: 45px;
+}
+#heading,#timer,#name{
+	color:white;
+}
+#timer{
+	padding-left: 230px;
+}
+input{
+	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	margin-left: 5px;
+  	padding: 5px;
+}
