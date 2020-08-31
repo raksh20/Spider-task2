@@ -219,6 +219,7 @@ function prevQuestion(){
   	else{
   		quiz.style.background="white";
   		body.style.backgroundImage='url("covid.jpg")';
+
   		ansMessage.innerHTML="";
 	  	next.disabled=false;
 	  	op1.disabled=false;
@@ -407,6 +408,7 @@ function reset(){
 	
 	quiz.style.background="white";
 	body.style.backgroundImage='url("covid.jpg")';
+
 	prevCount=0;
 	index++;
 	ansMessage.innerHTML="";
