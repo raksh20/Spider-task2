@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID-19 QUIZ</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+	<div id="quiz-container" class="slides">
+		<h1 id="heading">COVID-19 QUIZ</h1>
+		<div id="quiz" class="hide" >
+		<p id="ques">
+		</p>
+		<div class="options">
+			<button type="button" id="1" class="1">ans1</button>
+			<button type="button" id="2" class="2">ans2</button>
+			<button type="button" id="3" class="3">ans3</button>
+			<button type="button" id="4" class="4">ans4</button>
+
+		</div>
+
+	</div>
+	<p id=ans class="hide"></p>
+	<p id="result" class="hide"></p>
+	<div id="buttons">
+		<button type="button" id="start">START</button>
+		<button type="button" id="prev" class="hide" onclick="clickPrev(); prevQuestion();">PREVIOUS</button>
+		<button type="button" id="next" class="hide">NEXT</button>
+		<button type="button" id="submit" class="hide" onclick="clickSubmit(); ">SUBMIT</button>
+	</div>
+	
+
+	<script src="script.js"></script>
+</body>
+</html>
