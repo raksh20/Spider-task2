@@ -3,6 +3,9 @@
 }
 body{
 	background-image: url('covid.JPG');
+	background-repeat: repeat;
+	background-size: cover;
+	background-size: 1300px 1000px;
 	padding: 0;
 	margin: 0;
 	display: flex;
@@ -11,9 +14,14 @@ body{
     justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 .hide{
 	display:none;
+}
+
+#desc{
+	color: black;
 }
 #quiz{
 	background-color: white;
@@ -73,9 +81,9 @@ h1{
 	width:80%;
 	margin-left: 60px;
 	background-image: url('covid.JPG');
-	color:white;
+	color:black;
 	text-align: center;
 }
 #heading{
-	color:white;
+	color:black;
 }
